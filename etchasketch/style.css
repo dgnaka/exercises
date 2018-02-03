@@ -1,0 +1,19 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(16, 45px);
+    grid-template-rows: repeat(16, 45px);
+    background-color: #ffffff;
+}
+
+.wrapper > div {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000000;
+    padding: 1em;
+
+    
+}
+
+.hover {
+    background-color: red;
+}
