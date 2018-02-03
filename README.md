@@ -1,2 +1,2 @@
-# exercises
-Odin Project Projects
+# Odin Project Projects
+
