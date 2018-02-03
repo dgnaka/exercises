@@ -1,0 +1,2 @@
+# exercises
+Odin Project Projects
