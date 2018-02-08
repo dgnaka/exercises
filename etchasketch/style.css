@@ -1,19 +1,30 @@
-.wrapper {
+#wrapper {
     display: grid;
-    grid-template-columns: repeat(16, 45px);
-    grid-template-rows: repeat(16, 45px);
+    grid-template-columns: repeat(var(--columnSize), 1fr);
     background-color: #ffffff;
+    width: 600px;
+    height: 600px;
+    grid-column: 2/3;
+    grid-row: 2/3;  
+    border: 5px solid;  
 }
 
-.wrapper > div {
-    width: 10px;
-    height: 10px;
+.hoverTrail {
+    display: inline-block;
     border: 1px solid #000000;
-    padding: 1em;
-
+    padding: 0;
+    margin: 0;
     
 }
 
 .hover {
     background-color: red;
+}
+
+#container{
+	max-width: 960px;
+	margin: 50px auto;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 4fr;
 }

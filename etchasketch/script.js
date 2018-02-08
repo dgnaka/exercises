@@ -1,49 +1,43 @@
 const container = document.querySelector('#container');
 const mainGrid = document.createElement('div');
-mainGrid.classList.add('wrapper');
+mainGrid.setAttribute('id', 'wrapper');
 
 container.appendChild(mainGrid);
 
-// for(let i = 0; i < 256; i++) {
-//   const grid = document.createElement('div');
-//   grid.classList.add('hoverTrail');
-//   console.log(i);
-//   mainGrid.appendChild(grid);
-// };
+//let columnSize = ;
 
-const createGrid = (gridSize) => {
-  for(let i = 0; i < gridSize; i++) {
+const createGrid = (columnSize) => {
+  
+  for(let i = 0; i < (columnSize * columnSize); i++) {
     const grid = document.createElement('div');
     grid.classList.add('hoverTrail');
-    console.log(i);
     mainGrid.appendChild(grid);
-
+    
     const trails = Array.from(document.querySelectorAll('.hoverTrail'));
     trails.forEach((trail) => {
       trail.addEventListener('mouseenter', (e) => {
         trail.classList.add('hover');
       });
-      trail.addEventListener('mouseleave', (e) => {
-        trail.classList.remove('hover');
-      });
+      // trail.addEventListener('mouseleave', (e) => {
+      //   trail.classList.remove('hover');
+      // });
     });
-  };
-};
-
-const deleteGrid = () => {
-  let grid = document.getElementsByClassName('hoverTrail');
-  for(let i = 0; i < grid.length; i++) {
-    grid[i].parentNode.removeChild(grid[i]);
   };
 };
 
 const newGrid = document.querySelector('#newGrid');
 newGrid.addEventListener('click', (e) => {
-  let gridDivs = document.querySelectorAll(".hoverTrail");
-  gridDivs.forEach((gridDiv) => mainGrid.removeChild(gridDiv));
-  createGrid(prompt("Enter grid size: "));
-  
+  var columnSize = parseInt(prompt("Enter grid size: "));
+  let clearGrid = document.querySelectorAll(".hoverTrail");
+  clearGrid.forEach((grid) => mainGrid.removeChild(grid));
+  createGrid(columnSize);
+  setColumnSize = (columnSize) => {
+    document.body.style.setProperty('--columnSize', columnSize);
+  };
+  setColumnSize(columnSize);
 });
+
+
 
 
 
