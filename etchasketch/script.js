@@ -10,8 +10,6 @@ const createGrid = (columnSize) => {
     grid.classList.add('hoverTrail');
     mainGrid.appendChild(grid);   
   };
-
-  //colorDraw();
 };
 
 //Create grid button
