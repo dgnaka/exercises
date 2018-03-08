@@ -10,6 +10,7 @@ const operate = (op, x, y) => {
 
 const container = document.querySelector('#container');
 const getNumbers = document.querySelector('#numbers');
+const nums = document.querySelector('#nums');
 let display = '';
 let curNum;
 let newNum;
@@ -20,7 +21,7 @@ const createNumbers = () => {
         const buttons = document.createElement('button');
         buttons.setAttribute('id', 'nums');
         buttons.innerHTML = i;
-        container.appendChild(buttons);
+        nums.appendChild(buttons);
         //Add a click event to each of them to show the pressed numbers on the display
         buttons.addEventListener('click', (e) => {
             display += i;
@@ -31,21 +32,8 @@ const createNumbers = () => {
 createNumbers();
 
 //Addition operation function
-const addOp = document.querySelector('#add');
-addOp.addEventListener('click', (e) => {   
-    if (curNum === undefined) {
-        curNum = Number(display);
-        display = '';
-        console.log(curNum)   
-    } else if (newNum === undefined) {
-        newNum = Number(display);
-        display = '';
-        curNum = operate(add, curNum, newNum);
-        getNumbers.innerHTML = curNum;
-        newNum = undefined;
-        console.log(curNum)
-    };     
-})
+const operators = container.querySelectorAll('button');
+console.log(container)
 
 //Clear button to reset everything
 const clear = document.querySelector('#clear');
@@ -54,4 +42,32 @@ clear.addEventListener('click', (e) => {
     newNum = undefined;
     display = '';
     getNumbers.innerHTML = 0;
+})
+
+container.addEventListener('click', (e) => {   
+    if (curNum === undefined) {
+        curNum = Number(display);
+        display = '';
+        console.log(curNum)   
+    } else if (newNum === undefined) {
+        newNum = Number(display);
+        display = '';
+        
+        if (e.target.id === 'add') {
+            console.log('add')
+            curNum = operate(add, curNum, newNum);
+        } else if (e.target.id === 'subtract') {
+            console.log('subtract')
+            curNum = operate(subtract, curNum, newNum);
+        } else if (e.target.id === 'multiply') {
+            console.log('mult')
+            curNum = operate(multiply, curNum, newNum);
+        } else if (e.target.id === 'divide') {
+            console.log('divide')
+            curNum = operate(divide, curNum, newNum);
+        };
+
+        getNumbers.innerHTML = curNum;
+        newNum = undefined;
+    };     
 })
